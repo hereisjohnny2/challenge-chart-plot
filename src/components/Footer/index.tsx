@@ -1,8 +1,8 @@
 import styles from "./styles/styles.module.scss";
 
-export function FormFooter() {
+export function Footer() {
   return (
-    <footer className={styles.container}>
+    <footer contentEditable className={styles.container}>
       <button type="submit">GENERATE CHART</button>
     </footer>
   );

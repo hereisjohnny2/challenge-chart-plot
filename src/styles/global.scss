@@ -28,6 +28,10 @@
     }
   }
   
+  html, body {
+    height: 100vh;
+  }
+
   body {
     background: var(--white);
     color: var(--gray-900);
