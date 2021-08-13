@@ -87,3 +87,7 @@ a {
 .Resizer.disabled:hover {
   border-color: transparent;
 }
+
+.ace_hidpi .ace_text-layer, .ace_hidpi .ace_gutter-layer, .ace_hidpi .ace_content, .ace_hidpi .ace_gutter {
+  will-change: auto !important;
+}
