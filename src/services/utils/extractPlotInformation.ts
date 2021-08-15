@@ -8,19 +8,16 @@ export function extractPlotInformation(input: unknown[]) {
   const { group, select } = extractStartInformation(input);
   const { begin, end } = extractSpanInformation(input);
 
-  const dataEvents = extractDataEventsFromJson({
-    input,
-    begin,
-    end,
+  const dataEvents = extractDataEventsFromJson({ input, begin, end });
+  
+  const dataLabels = dataEvents.map(event => {
+    if (!event["timestamp"]) {
+      throw new Error("Invalid date input or missing date information")
+    }
+    return new Date(event["timestamp"]).toISOString();
   });
   
-  const dataLabels = dataEvents.map(event => new Date(event["timestamp"]).toISOString());
-  
-  const dataEventsMap = extractPlotDataToMap({
-    dataEvents,
-    group: group,
-    selectedFields: select
-  });
+  const dataEventsMap = extractPlotDataToMap({ dataEvents, group, select });
 
   const plotData = createObjectListFromMap(dataEventsMap)
 

@@ -1,7 +1,7 @@
 interface IDataToMapDTO {
   dataEvents: unknown[];
   group: string[];
-  selectedFields: string[];
+  select: string[];
 }
 
 function addDataToMap(map: Map<string, number[]>, key: string, value: number) {
@@ -15,7 +15,7 @@ function addDataToMap(map: Map<string, number[]>, key: string, value: number) {
 export function extractPlotDataToMap({
   dataEvents,
   group,
-  selectedFields
+  select
 }: IDataToMapDTO): Map<string, number[]> {
   const plotData = new Map<string, number[]>();
 
@@ -27,7 +27,7 @@ export function extractPlotDataToMap({
       return event[groupField];
     }).join(" ");
   
-    selectedFields.forEach(field => {
+    select.forEach(field => {
       const key = `${baseName} ${field}`;
 
       if (!event[field]) {

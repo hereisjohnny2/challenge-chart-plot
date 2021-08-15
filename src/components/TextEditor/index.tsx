@@ -12,7 +12,7 @@ export function TextEditor() {
   return(
     <AceEditor
       value={inputData}
-      onChange={(value, _) => setInputData(value)}
+      onChange={(value, event) => setInputData(value)}
       mode="json"
       theme="dracula"
       name="data-editor"

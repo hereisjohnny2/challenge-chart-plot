@@ -26,9 +26,7 @@ export function EventProvider(props: EventProviderProps) {
   const [labels, setLabels] = useState<string[]>([]);
 
   function handleGenerateChart() {
-    const jsonInputData = inputData.split("\n").map(event => {
-      return JSON.parse(event);
-    });
+    const jsonInputData = JSON.parse(inputData);
 
     const { dataLabels, plotData } = extractPlotInformation(jsonInputData);
     
