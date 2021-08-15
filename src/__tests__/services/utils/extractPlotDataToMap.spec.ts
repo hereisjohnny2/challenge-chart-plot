@@ -1,4 +1,4 @@
-import { extractPlotDataToMap } from "./extractPlotDataToMap";
+import { extractPlotDataToMap } from "../../../services/utils/extractPlotDataToMap";
 
 describe("Extract Plot Data to Map Function", () => {
   let dataEvents: unknown[];

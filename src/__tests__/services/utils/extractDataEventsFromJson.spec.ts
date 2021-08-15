@@ -1,4 +1,4 @@
-import { extractDataEventsFromJson } from "./extractDataEventsFromJson";
+import { extractDataEventsFromJson } from "../../../services/utils/extractDataEventsFromJson";
 
 describe("Extract Data Events From Json Function", () => {
   let inputData: any[];
