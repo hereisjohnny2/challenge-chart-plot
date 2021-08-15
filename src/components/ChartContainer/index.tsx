@@ -5,8 +5,21 @@ import Styles from "./styles/styles.module.scss";
 import { useEvent } from "../../services/hooks/useEvent";
 
 export function ChartContainer() {
-  const { plotData } = useEvent();
-  const options: ApexOptions = {  }
+  const { plotData, labels } = useEvent();
+  const options: ApexOptions = { 
+    legend: {
+      position: "right",
+    },
+    chart: {
+      toolbar: {
+        show: false
+      },
+    },
+    xaxis: {
+      type: "datetime",
+      categories: labels,
+    },
+  }
 
   return(
     <div className={Styles.container}>
