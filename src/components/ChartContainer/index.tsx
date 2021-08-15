@@ -6,7 +6,7 @@ import { useEvent } from "../../services/hooks/useEvent";
 
 export function ChartContainer() {
   const { plotData } = useEvent();
-  const options: ApexOptions = { }
+  const options: ApexOptions = {  }
 
   return(
     <div className={Styles.container}>

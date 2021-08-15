@@ -7,12 +7,12 @@ import "ace-builds/src-noconflict/theme-dracula";
 import { useEvent } from "../../services/hooks/useEvent";
 
 export function TextEditor() {
-  const { data, setData } = useEvent();
+  const { inputData, setInputData } = useEvent();
 
   return(
     <AceEditor
-      value={data}
-      onChange={(value, event) => setData(value)}
+      value={inputData}
+      onChange={(value, _) => setInputData(value)}
       mode="json"
       theme="dracula"
       name="data-editor"
