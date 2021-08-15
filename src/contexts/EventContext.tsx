@@ -1,7 +1,5 @@
 import { createContext, ReactNode, useState } from "react";
 import { extractPlotInformation } from "../services/utils/extractPlotInformation";
-import { extractSpanInformation } from "../services/utils/extractSpanInformation";
-import { extractStartInformation } from "../services/utils/extractStartInformation";
 
 type EventContextProps = {
   inputData: string;
@@ -32,16 +30,7 @@ export function EventProvider(props: EventProviderProps) {
       return JSON.parse(event);
     });
 
-    const { group, select } = extractStartInformation(jsonInputData);
-    const { begin, end } = extractSpanInformation(jsonInputData);
-
-    const { dataLabels, plotData } = extractPlotInformation({
-      jsonInputData,
-      begin,
-      end,
-      group,
-      select
-    });
+    const { dataLabels, plotData } = extractPlotInformation(jsonInputData);
     
     setLabels(dataLabels);
     setPlotData(plotData);    

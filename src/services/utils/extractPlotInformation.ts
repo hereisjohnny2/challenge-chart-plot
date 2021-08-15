@@ -1,29 +1,20 @@
 import { createObjectListFromMap } from "./createObjectFromMap";
 import { extractDataEventsFromJson } from "./extractDataEventsFromJson";
 import { extractPlotDataToMap } from "./extractPlotDataToMap";
+import { extractSpanInformation } from "./extractSpanInformation";
+import { extractStartInformation } from "./extractStartInformation";
 
-interface IPlotInformationDTO {
-  jsonInputData: unknown[],
-  begin: number,
-  end: number,
-  group: string[],
-  select: string[],
-}
+export function extractPlotInformation(input: unknown[]) {
+  const { group, select } = extractStartInformation(input);
+  const { begin, end } = extractSpanInformation(input);
 
-export function extractPlotInformation({
-  jsonInputData,
-  begin,
-  end,
-  group,
-  select
-}: IPlotInformationDTO) {
   const dataEvents = extractDataEventsFromJson({
-    inputData: jsonInputData,
+    input,
     begin,
     end,
   });
   
-  const dataLabels = dataEvents.map(event => new Date(event.timestamp).toISOString());
+  const dataLabels = dataEvents.map(event => new Date(event["timestamp"]).toISOString());
   
   const dataEventsMap = extractPlotDataToMap({
     dataEvents,
