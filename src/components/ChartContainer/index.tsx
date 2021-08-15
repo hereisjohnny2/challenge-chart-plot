@@ -2,10 +2,10 @@ import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
 import Styles from "./styles/styles.module.scss";
-import { useJsonData } from "../../services/hooks/useJsonData";
+import { useEvent } from "../../services/hooks/useEvent";
 
 export function ChartContainer() {
-  const { plotData } = useJsonData();
+  const { plotData } = useEvent();
   const options: ApexOptions = { }
 
   return(

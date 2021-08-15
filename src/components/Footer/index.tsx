@@ -1,8 +1,8 @@
-import { useJsonData } from "../../services/hooks/useJsonData";
+import { useEvent } from "../../services/hooks/useEvent";
 import styles from "./styles/styles.module.scss";
 
 export function Footer() {
-  const { handleGenerateChart } = useJsonData();
+  const { handleGenerateChart } = useEvent();
   
   return (
     <footer className={styles.container}>

@@ -4,10 +4,10 @@ import "ace-builds/webpack-resolver";
 import "ace-builds/src-noconflict/mode-json";
 import "ace-builds/src-noconflict/theme-dracula";
 
-import { useJsonData } from "../../services/hooks/useJsonData";
+import { useEvent } from "../../services/hooks/useEvent";
 
 export function TextEditor() {
-  const { data, setData } = useJsonData();
+  const { data, setData } = useEvent();
 
   return(
     <AceEditor

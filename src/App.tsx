@@ -1,18 +1,18 @@
 import { Header } from "./components/Header";
 import { Main } from "./components/Main";
 import { Footer } from "./components/Footer";
-import { JSONDataProvider } from "./contexts/JSONDataContext";
+import { EventProvider } from "./contexts/EventContext";
 import styles from "./styles/app.module.scss";
 
 function App() {
   return (
-    <JSONDataProvider>
+    <EventProvider>
       <div className={styles.appContainer}>
         <Header />
         <Main />
         <Footer />
       </div>
-    </JSONDataProvider>
+    </EventProvider>
   );
 }
 

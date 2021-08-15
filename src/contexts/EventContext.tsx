@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useState } from "react";
 
-type JSONDataContextProps = {
+type EventContextProps = {
   data: string;
   setData: (value: string) => void;
   plotData: PlotDataType[];
@@ -8,7 +8,7 @@ type JSONDataContextProps = {
   handleGenerateChart: () => void;
 }
 
-type JSONDataProviderProps = {
+type EventProviderProps = {
   children: ReactNode;
 }
 
@@ -17,9 +17,9 @@ type PlotDataType = {
   data: number[];
 }
 
-export const JSONDataContext = createContext({} as JSONDataContextProps);
+export const EventContext = createContext({} as EventContextProps);
 
-export function JSONDataProvider(props: JSONDataProviderProps) {
+export function EventProvider(props: EventProviderProps) {
   const [data, setData] = useState("");
   const [plotData, setPlotData] = useState<PlotDataType[]>([]);
 
@@ -31,14 +31,14 @@ export function JSONDataProvider(props: JSONDataProviderProps) {
     const dataEvents = eventsList.filter(event => event.type === "data");
 
     const dataPoints = dataEvents.map(point => {
-      point
+      
     });
 
     console.log(dataEvents);    
   }
 
   return (
-    <JSONDataContext.Provider
+    <EventContext.Provider
       value = {{
         data,
         setData,
@@ -48,7 +48,7 @@ export function JSONDataProvider(props: JSONDataProviderProps) {
       }}
     >
       {props.children}
-    </JSONDataContext.Provider>
+    </EventContext.Provider>
   );
 
 }
