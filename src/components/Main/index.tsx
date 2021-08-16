@@ -8,7 +8,6 @@ export function Main() {
       <SplitPane 
         split="horizontal" 
         minSize={200}
-        defaultSize={200}
         style={{"position": "unset"}}
       >
         <TextEditor />

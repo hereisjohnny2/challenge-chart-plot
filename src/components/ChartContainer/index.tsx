@@ -1,7 +1,7 @@
 import Chart from "react-apexcharts";
 import { ApexOptions } from "apexcharts";
 
-import Styles from "./styles/styles.module.scss";
+import styles from "./styles.module.scss";
 import { useEvent } from "../../services/hooks/useEvent";
 
 export function ChartContainer() {
@@ -24,7 +24,7 @@ export function ChartContainer() {
   }
 
   return(
-    <div className={Styles.container}>
+    <div className={styles.container}>
       <Chart 
         type="line"
         height="100%"
