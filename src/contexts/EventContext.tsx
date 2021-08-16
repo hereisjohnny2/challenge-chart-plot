@@ -7,6 +7,8 @@ type EventContextProps = {
   plotData: PlotDataType[];
   labels: string[];
   handleGenerateChart: () => void;
+  errorMessage: string;
+  hasError: boolean;
 }
 
 type EventProviderProps = {
@@ -24,14 +26,20 @@ export function EventProvider(props: EventProviderProps) {
   const [inputData, setInputData] = useState("");
   const [plotData, setPlotData] = useState<PlotDataType[]>([]);
   const [labels, setLabels] = useState<string[]>([]);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [hasError, setHasError] = useState(false);
 
-  function handleGenerateChart() {
-    const jsonInputData = JSON.parse(inputData);
-
-    const { dataLabels, plotData } = extractPlotInformation(jsonInputData);
+  function handleGenerateChart() {    
+    try {
+      const jsonInputData = JSON.parse(inputData);
+      const { dataLabels, plotData } = extractPlotInformation(jsonInputData);
     
-    setLabels(dataLabels);
-    setPlotData(plotData);    
+      setLabels(dataLabels);
+      setPlotData(plotData);  
+    } catch (error) {
+      setHasError(true);
+      setErrorMessage(error.message);
+    }   
   }
 
   return (
@@ -42,6 +50,8 @@ export function EventProvider(props: EventProviderProps) {
         plotData,
         labels,
         handleGenerateChart,
+        hasError,
+        errorMessage,
       }}
     >
       {props.children}
