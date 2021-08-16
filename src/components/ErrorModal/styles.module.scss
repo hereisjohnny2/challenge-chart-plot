@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  align-self: flex-end;
+  padding: 0;
+  border: none;
+  background: transparent;
+  transition: filter 0.2s;
+
+  &:hover {
+    filter: opacity(0.8);
+  }
+}
+
+.textContainer {
+  margin-top: 2rem;
+  text-align: center;
+
+  strong {
+    font-size: 1.5rem;
+  }
+  p {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+  }
+}

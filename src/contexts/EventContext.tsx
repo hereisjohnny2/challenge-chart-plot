@@ -9,6 +9,7 @@ type EventContextProps = {
   handleGenerateChart: () => void;
   errorMessage: string;
   hasError: boolean;
+  setHasError: (state: boolean) => void;
 }
 
 type EventProviderProps = {
@@ -38,7 +39,7 @@ export function EventProvider(props: EventProviderProps) {
       setPlotData(plotData);  
     } catch (error) {
       setHasError(true);
-      setErrorMessage(error.message);
+      setErrorMessage(error.message);     
     }   
   }
 
@@ -52,6 +53,7 @@ export function EventProvider(props: EventProviderProps) {
         handleGenerateChart,
         hasError,
         errorMessage,
+        setHasError
       }}
     >
       {props.children}
