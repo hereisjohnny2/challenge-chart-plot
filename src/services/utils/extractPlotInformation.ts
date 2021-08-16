@@ -24,5 +24,7 @@ export function extractPlotInformation(input: unknown[]) {
   return {
     dataLabels,
     plotData,
+    begin,
+    end,
   }
 }

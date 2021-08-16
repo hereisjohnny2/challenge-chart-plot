@@ -10,6 +10,8 @@ type EventContextProps = {
   errorMessage: string;
   hasError: boolean;
   setHasError: (state: boolean) => void;
+  begin: number;
+  end: number;
 }
 
 type EventProviderProps = {
@@ -29,14 +31,18 @@ export function EventProvider(props: EventProviderProps) {
   const [labels, setLabels] = useState<string[]>([]);
   const [errorMessage, setErrorMessage] = useState("");
   const [hasError, setHasError] = useState(false);
+  const [begin, setBegin] = useState(0);
+  const [end, setEnd] = useState(0);
 
   function handleGenerateChart() {    
     try {
       const jsonInputData = JSON.parse(inputData);
-      const { dataLabels, plotData } = extractPlotInformation(jsonInputData);
+      const { dataLabels, plotData, begin, end } = extractPlotInformation(jsonInputData);
     
       setLabels(dataLabels);
       setPlotData(plotData);  
+      setBegin(begin);
+      setEnd(end);
     } catch (error) {
       setHasError(true);
       setErrorMessage(error.message);     
@@ -53,7 +59,9 @@ export function EventProvider(props: EventProviderProps) {
         handleGenerateChart,
         hasError,
         errorMessage,
-        setHasError
+        setHasError,
+        begin,
+        end
       }}
     >
       {props.children}

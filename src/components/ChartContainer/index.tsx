@@ -5,7 +5,7 @@ import Styles from "./styles/styles.module.scss";
 import { useEvent } from "../../services/hooks/useEvent";
 
 export function ChartContainer() {
-  const { plotData, labels } = useEvent();
+  const { plotData, labels, begin, end } = useEvent();
   const options: ApexOptions = { 
     legend: {
       position: "right",
@@ -18,6 +18,8 @@ export function ChartContainer() {
     xaxis: {
       type: "datetime",
       categories: labels,
+      min: begin,
+      max: end,
     },
   }
 
